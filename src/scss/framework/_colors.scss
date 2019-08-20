@@ -1,0 +1,21 @@
+$colors: (
+	"primary": $color-primary,
+	"secondary": $color-secondary,
+	"white": #fff,
+	"black": #000
+);
+
+@each $name, $color in $colors
+{
+	.color-#{$name} { color: #{$color}; }
+	.bg-#{$name} { background-color: #{$color}; }
+
+	@for $i from 1 through 5
+	{
+		.color-#{$name}.darken-#{$i} { color: darken($color, $i * 5%); }
+		.bg-#{$name}.darken-#{$i} { background-color: darken($color, $i * 5%); }
+		
+		.color-#{$name}.lighten-#{$i} { color: lighten($color, $i * 5%); }
+		.bg-#{$name}.lighten-#{$i} { background-color: lighten($color, $i * 5%); }
+	}
+}

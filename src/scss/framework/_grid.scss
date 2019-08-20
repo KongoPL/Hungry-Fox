@@ -1,0 +1,23 @@
+.container
+{
+	width: 90%;
+	max-width: 1140px;
+
+	margin: 0px auto;
+}
+
+.row {
+	display: flex;
+
+	flex-wrap: wrap;
+}
+
+@for $i from 1 through $grid-columns-count {
+	.col-#{$i} {
+		width: ($i / $grid-columns-count * 100%);
+
+		padding: 0px $grid-columns-padding;
+
+		box-sizing: border-box;
+	}
+}

@@ -1,0 +1,67 @@
+@import '../../_autoload';
+
+header#page
+{
+	height: 80px;
+
+	padding: 7px 0px;
+
+	color: #fff;
+
+	.container,
+	.logo,
+	.logo > img
+	{
+		height: 100%;
+	}
+
+	.container > *
+	{
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	.menu
+	{
+		@include horizontal-list;
+		@include reset-link-style;
+
+		margin-left: 30px;
+
+		font-size: 1.33rem;
+		font-weight: bold;
+
+		li:not(:first-child)
+		{
+			margin-left: 20px;
+		}
+	}
+
+	.shopping-cart
+	{
+		font-size: 2.5rem;
+		line-height: calc(80px - 14px);
+	}
+}
+
+footer#page .pre-footer
+{ 
+	padding: 10px 0px;
+}
+
+footer#page .footer-text
+{ 
+	@include reset-link-style;
+
+	padding: 10px 0px;
+
+	font-size: 1.1rem;
+}
+
+
+footer#page .footer-menu-links
+{
+	@include reset-list;
+
+	line-height: 2rem;
+}

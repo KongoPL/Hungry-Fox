@@ -1,0 +1,24 @@
+.btn
+{
+	padding: 10px 15px;
+
+	border-radius: 5px;
+
+	background: $color-secondary;
+
+	color: #fff;
+	text-transform: uppercase;
+	text-decoration: none;
+
+	cursor: pointer;
+}
+
+.btn:hover
+{
+	background: get-color("secondary", "darken-1");
+}
+
+.btn .fa
+{
+	margin-right: 10px;
+}

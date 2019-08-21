@@ -7,9 +7,15 @@
 }
 
 .row {
-	display: flex;
+	margin-bottom: 20px;
 
+	display: flex;
 	flex-wrap: wrap;
+
+	& .row
+	{
+		margin: 0px;
+	}
 }
 
 @for $i from 1 through $grid-columns-count {
@@ -19,5 +25,10 @@
 		padding: 0px $grid-columns-padding;
 
 		box-sizing: border-box;
+	}
+
+	.offset-#{$i}
+	{
+		margin-left: ($i / $grid-columns-count * 100%);
 	}
 }

@@ -5,3 +5,38 @@ $links-color: #0086db;
 
 $grid-columns-count: 12;
 $grid-columns-padding: 15px;
+
+$colors-list: (
+	"primary": (
+		"base": $color-primary,
+		"darken-1": darken($color-primary, 5%),
+		"darken-2": darken($color-primary, 10%),
+		"darken-3": darken($color-primary, 15%),
+		"darken-4": darken($color-primary, 20%),
+		"darken-5": darken($color-primary, 25%),
+		"lighten-1": lighten($color-primary, 5%),
+		"lighten-2": lighten($color-primary, 10%),
+		"lighten-3": lighten($color-primary, 15%),
+		"lighten-4": lighten($color-primary, 20%),
+		"lighten-5": lighten($color-primary, 25%),
+	),
+	"secondary": (
+		"base": $color-secondary,
+		"darken-1": darken($color-secondary, 5%),
+		"darken-2": darken($color-secondary, 10%),
+		"darken-3": darken($color-secondary, 15%),
+		"darken-4": darken($color-secondary, 20%),
+		"darken-5": darken($color-secondary, 25%),
+		"lighten-1": lighten($color-secondary, 5%),
+		"lighten-2": lighten($color-secondary, 10%),
+		"lighten-3": lighten($color-secondary, 15%),
+		"lighten-4": lighten($color-secondary, 20%),
+		"lighten-5": lighten($color-secondary, 25%),
+	),
+	"white": (
+		"base": #fff,
+	),
+	"black": (
+		"base": #000
+	)
+);

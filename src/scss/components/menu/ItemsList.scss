@@ -1,0 +1,26 @@
+section.menu-items .menu-item
+{
+	.image, .right-column
+	{
+		text-align: center;
+	}
+
+	.image img
+	{
+		width: 150px;
+		height: 150px;
+		object-fit: contain;
+	}
+
+	.text header
+	{
+		margin-top: 0px;
+	}
+
+	.right-column .price
+	{
+		margin-right: 15px;
+
+		display: inline-block;
+	}
+}

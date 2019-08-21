@@ -24,3 +24,21 @@
 		text-decoration: none;
 	}
 }
+
+
+@function get-color($name, $type: "base")
+{
+	@if map-has-key($colors-list, $name) == false
+	{
+		@error "Color " + $name + " doesn't exists!";
+	}
+
+	$color: map-get($colors-list, $name);
+
+	@if map-has-key($color, $type) == false
+	{
+		@error "Type " + $type + "doesn't exists in color " + $name + "!";
+	}
+
+	@return map-get($color, $type);
+}

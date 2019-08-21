@@ -1,21 +1,22 @@
-$colors: (
-	"primary": $color-primary,
-	"secondary": $color-secondary,
-	"white": #fff,
-	"black": #000
-);
-
-@each $name, $color in $colors
+@each $name, $colors in $colors-list
 {
-	.color-#{$name} { color: #{$color}; }
-	.bg-#{$name} { background-color: #{$color}; }
-
-	@for $i from 1 through 5
+	@each $type, $color in $colors
 	{
-		.color-#{$name}.darken-#{$i} { color: darken($color, $i * 5%); }
-		.bg-#{$name}.darken-#{$i} { background-color: darken($color, $i * 5%); }
-		
-		.color-#{$name}.lighten-#{$i} { color: lighten($color, $i * 5%); }
-		.bg-#{$name}.lighten-#{$i} { background-color: lighten($color, $i * 5%); }
+		$selectorColor: "";
+		$selectorBackground: "";
+
+		@if $type == "base"
+		{
+			$selectorColor: ".color-" + $name;
+			$selectorBackground: ".bg-" + $name;
+		}
+		@else
+		{
+			$selectorColor: ".color-" + $name+"."+$type;
+			$selectorBackground: ".bg-" + $name+"."+$type;
+		}
+
+		#{$selectorColor} { color: #{$color}; }
+		#{$selectorBackground} { background-color: #{$color}; }
 	}
 }

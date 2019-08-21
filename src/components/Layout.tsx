@@ -4,6 +4,8 @@ import logotype from 'images/logotype.png';
 import Icon from 'components/Icon';
 import 'scss/components/layout/Layout.scss';
 
+import { Link } from 'react-router-dom';
+
 export default class Layout extends React.Component<{}>
 {
 	render() {
@@ -11,13 +13,13 @@ export default class Layout extends React.Component<{}>
 			<div>
 				<header id="page" className="bg-primary">
 					<div className="container">
-						<div className="logo"><img src={logotype} alt="logotype" /></div>
+						<div className="logo"><Link to="/"><img src={logotype} alt="logotype" /></Link></div>
 						<ul className="menu">
-							<li>Order</li>
-							<li>Coupons</li>
-							<li>Staff</li>
-							<li>Partners</li>
-							<li>Job</li>
+							<li><Link to="/menu">Order</Link></li>
+							<li><Link to="/coupons">Coupons</Link></li>
+							<li><Link to="/staff">Staff</Link></li>
+							<li><Link to="/partners">Partners</Link></li>
+							<li><Link to="/job">Job</Link></li>
 							<li>Contact</li>
 						</ul>
 						<div className="float-right">
@@ -77,7 +79,7 @@ export default class Layout extends React.Component<{}>
 								</div>
 									<div className="float-right">
 										<a href="https://github.com/KongoPL/Hungry-Fox" target="_blank">
-											<Icon name="github" /> Github Project
+											<Icon name="github" /> Github project
 									</a>
 									</div>
 								</div>

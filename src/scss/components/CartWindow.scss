@@ -1,0 +1,49 @@
+@import '../_autoload.scss';
+
+.cartWindow
+{
+	position: absolute;
+	top: 73px;
+	right: 0px;
+
+	width: 300px;
+
+	padding: 0px 10px 10px;
+
+	display: none;
+
+	border: 1px solid $color-secondary;
+	border-top: 0px;
+	box-shadow: 1px 1px 5px rgba(0,0,0,0.4);
+
+	background: #fff;
+
+	color: $text-color;
+
+	overflow: auto;
+
+	table.order-items
+	{
+		border-spacing: 5px 0px;
+
+		.quantity input {width: 30px; margin-left: 5px;}
+	}
+
+	.total
+	{
+		margin-bottom: 15px;
+	}
+
+	.total .total-price
+	{
+		margin: 0px;
+
+		display: inline-block;
+
+	}
+}
+
+.cartWindow.active
+{
+	display: block;
+}

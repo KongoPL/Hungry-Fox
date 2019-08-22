@@ -1,13 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 
-
-
-import 'scss/components/partners/Partners.scss';
-
-
-
-
 export default class Job extends React.Component<{ match: any}>
 {
 	render()

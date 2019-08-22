@@ -1,12 +1,17 @@
-@import '../../_autoload';
+@import '../_autoload';
+
 
 header#page
 {
+	position: relative;
+
 	height: 80px;
 
 	padding: 7px 0px;
 
 	color: #fff;
+
+	z-index: 10;
 
 	.container,
 	.logo,
@@ -18,7 +23,7 @@ header#page
 	.container > *
 	{
 		display: inline-block;
-		vertical-align: middle;
+		vertical-align: top;
 	}
 
 	.menu
@@ -26,21 +31,51 @@ header#page
 		@include horizontal-list;
 		@include reset-link-style;
 
-		margin-left: 30px;
+		height: 80px;
+		margin-top: -7px;
+
+		line-height: 80px;
+
+		margin-left: 15px;
 
 		font-size: 1.33rem;
 		font-weight: bold;
 
-		li:not(:first-child)
+		a
 		{
-			margin-left: 20px;
+			height: 100%;
+
+			padding: 0px 15px;
+
+			display: block;
+
+			&:hover
+			{
+				background: rgba(0,0,0,0.15);
+			}
+
+			&.active
+			{
+				background: $color-secondary;
+			}
 		}
 	}
 
 	.shopping-cart
 	{
+		margin-top: -7px;
+
+		padding: 0px 10px;
+
 		font-size: 2.5rem;
-		line-height: calc(80px - 14px);
+		line-height: 80px;
+
+		cursor: pointer;
+	}
+
+	.shopping-cart.active
+	{
+		background: $color-secondary;
 	}
 }
 

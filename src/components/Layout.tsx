@@ -2,9 +2,10 @@ import React from 'react';
 
 import logotype from 'images/logotype.png';
 import Icon from 'components/Icon';
-import 'scss/components/layout/Layout.scss';
+import 'scss/components/Layout.scss';
 
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import CartWindow from './CartWindow';
 
 export default class Layout extends React.Component<{}>
 {
@@ -13,17 +14,18 @@ export default class Layout extends React.Component<{}>
 			<div>
 				<header id="page" className="bg-primary">
 					<div className="container">
-						<div className="logo"><Link to="/"><img src={logotype} alt="logotype" /></Link></div>
+						<div className="logo"><NavLink to="/"><img src={logotype} alt="logotype" /></NavLink></div>
 						<ul className="menu">
-							<li><Link to="/menu">Order</Link></li>
-							<li><Link to="/coupons">Coupons</Link></li>
-							<li><Link to="/staff">Staff</Link></li>
-							<li><Link to="/partners">Partners</Link></li>
-							<li><Link to="/job">Job</Link></li>
-							<li>Contact</li>
+							<li><NavLink exact to="/" activeClassName="active">Order</NavLink></li>
+							<li><NavLink to="/coupons" activeClassName="active">Coupons</NavLink></li>
+							<li><NavLink to="/staff" activeClassName="active">Staff</NavLink></li>
+							<li><NavLink to="/partners" activeClassName="active">Partners</NavLink></li>
+							<li><NavLink to="/job" activeClassName="active">Job</NavLink></li>
+							<li><NavLink to="/contact" activeClassName="active">Contact</NavLink></li>
 						</ul>
 						<div className="float-right">
 							<Icon name="shopping-cart" className="shopping-cart" />
+							<CartWindow />
 						</div>
 					</div>
 				</header>

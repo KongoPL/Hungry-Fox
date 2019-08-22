@@ -1,4 +1,27 @@
 @import './framework/framework';
+@import './_config.scss';
+
+*
+{
+	box-sizing: border-box;
+}
+
+html, input, textarea, button
+{
+	font: 15px "Segoe UI";
+	color: $text-color;
+}
+
+body
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+a
+{
+	color: #{$links-color};
+}
 
 .fa
 {

@@ -12,15 +12,15 @@ export default class Contact extends React.Component
 				</p>
 
 				<form>
-					<div className="form-input">
+					<div className="form-input required">
 						<label htmlFor="email">Email address</label>
 						<input type="email" id="email" placeholder="joe@example.com" />
 					</div>
-					<div className="form-input">
+					<div className="form-input required">
 						<label htmlFor="name">Your name</label>
 						<input type="text" id="name" placeholder="Joe" />
 					</div>
-					<div className="form-input">
+					<div className="form-input required">
 						<label htmlFor="message">Message</label>
 						<textarea id="message"></textarea>
 					</div>

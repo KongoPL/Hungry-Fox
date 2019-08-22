@@ -1,6 +1,6 @@
 @import '../_autoload.scss';
 
-.cartWindow
+.cart-window
 {
 	position: absolute;
 	top: 73px;
@@ -22,28 +22,8 @@
 
 	overflow: auto;
 
-	table.order-items
+	&.active
 	{
-		border-spacing: 5px 0px;
-
-		.quantity input {width: 30px; margin-left: 5px;}
+		display: block;
 	}
-
-	.total
-	{
-		margin-bottom: 15px;
-	}
-
-	.total .total-price
-	{
-		margin: 0px;
-
-		display: inline-block;
-
-	}
-}
-
-.cartWindow.active
-{
-	display: block;
 }

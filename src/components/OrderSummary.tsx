@@ -1,13 +1,10 @@
 import React from 'react';
 import Icon from 'components/Icon';
-import OrderSummary from 'components/OrderSummary';
 
-import 'scss/components/CartWindow.scss';
+import 'scss/components/OrderSummary.scss';
 
-export default class CartWindow extends React.Component
-{
-	render()
-	{
+export default class OrderSummary extends React.Component {
+	render() {
 		let items = [];
 
 		for (let i = 0; i < 3; i++)
@@ -21,10 +18,15 @@ export default class CartWindow extends React.Component
 			</tr>);
 
 		return (
-			<div className="cart-window">
-				<div className="clearfix"></div>
-				<OrderSummary />
-				<a className="btn float-right">Order</a>
+			<div className="order-summary">
+				<h3>Your order</h3>
+				<table className="order-items table">
+					{items}
+				</table>
+				<hr />
+				<div className="total text-right">
+					Total: <h3 className="total-price">$80.70</h3>
+				</div>
 			</div>
 		);
 	}

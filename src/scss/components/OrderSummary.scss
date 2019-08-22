@@ -1,0 +1,22 @@
+.order-summary
+{
+	table.order-items
+	{
+		border-spacing: 5px 0px;
+
+		.quantity input {width: 30px; margin-left: 5px;}
+	}
+
+	.total
+	{
+		margin-bottom: 15px;
+	}
+
+	.total .total-price
+	{
+		margin: 0px;
+
+		display: inline-block;
+
+	}
+}

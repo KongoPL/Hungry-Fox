@@ -1,11 +1,10 @@
 import React from "react";
 
-import 'scss/components/partners/Partners.scss';
+import 'scss/pages/partners/Partners.scss';
 
-
-import googleGraphic from 'images/partner-google.png';
-import githubGraphic from 'images/partner-github.png';
-import uberGraphic from 'images/partner-uber.png';
+import googleGraphic from 'assets/partner-google.png';
+import githubGraphic from 'assets/partner-github.png';
+import uberGraphic from 'assets/partner-uber.png';
 
 
 export default class Partners extends React.Component

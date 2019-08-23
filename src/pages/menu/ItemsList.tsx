@@ -1,9 +1,9 @@
 import React from "react";
 import Icon from 'components/Icon';
 
-import 'scss/components/menu/ItemsList.scss';
+import 'scss/pages/menu/ItemsList.scss';
 
-import categoryIcon from 'images/category-icon.png';
+import categoryIcon from 'assets/category-icon.png';
 
 
 export default class ItemsList extends React.Component {

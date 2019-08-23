@@ -1,8 +1,8 @@
 import React from "react";
 
-import 'scss/components/coupons/Coupon.scss';
+import 'scss/pages/coupons/Coupon.scss';
 
-import saleGraphic from 'images/sale-graphic.png';
+import saleGraphic from 'assets/sale-graphic.png';
 
 
 export default class Coupon extends React.Component<{ className?: string }>

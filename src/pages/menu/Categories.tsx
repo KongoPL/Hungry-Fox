@@ -1,8 +1,8 @@
 import React from "react";
 
-import 'scss/components/menu/Categories.scss';
+import 'scss/pages/menu/Categories.scss';
 
-import categoryIcon from 'images/category-icon.png';
+import categoryIcon from 'assets/category-icon.png';
 
 
 

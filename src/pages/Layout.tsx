@@ -1,17 +1,18 @@
 import React from 'react';
-
-import logotype from 'images/logotype.png';
-import Icon from 'components/Icon';
-import 'scss/components/Layout.scss';
-
 import { NavLink } from 'react-router-dom';
-import CartWindow from './CartWindow';
+
+import Icon from 'components/Icon';
+import CartWindow from 'components/CartWindow';
+
+import 'scss/pages/Layout.scss';
+
+import logotype from 'assets/logotype.png';
 
 export default class Layout extends React.Component<{}>
 {
 	render() {
 		return (
-			<div>
+			<div id="layout">
 				<header id="page" className="bg-primary">
 					<div className="container">
 						<div className="logo"><NavLink to="/"><img src={logotype} alt="logotype" /></NavLink></div>
@@ -29,7 +30,7 @@ export default class Layout extends React.Component<{}>
 						</div>
 					</div>
 				</header>
-				<div className="container">
+				<div className="container" id="page-content">
 					{this.props.children}
 				</div>
 

@@ -1,5 +1,5 @@
 import React from "react";
-import Coupon from "./Coupon";
+import Coupon from "pages/coupons/Coupon";
 
 export default class Coupons extends React.Component
 {

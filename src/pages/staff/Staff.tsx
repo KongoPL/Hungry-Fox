@@ -1,6 +1,5 @@
 import React from "react";
-import StaffMember from "components/staff/StaffMember";
-
+import StaffMember from "pages/staff/StaffMember";
 
 export default class Staff extends React.Component
 {

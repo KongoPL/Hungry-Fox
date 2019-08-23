@@ -1,12 +1,10 @@
-@import './_config';
-@import './_mixins';
+@import 'scss/framework/_config';
+@import 'scss/framework/_mixins';
 
-@import './_grid';
-@import './_helpers';
-@import './_colors';
-@import './_typography';
-@import './_buttons';
-@import './_form';
-@import './_tables';
-
-@import './_main';
+@import 'scss/framework/components/_grid';
+@import 'scss/framework/components/_helpers';
+@import 'scss/framework/components/_colors';
+@import 'scss/framework/components/_typography';
+@import 'scss/framework/components/_buttons';
+@import 'scss/framework/components/_form';
+@import 'scss/framework/components/_tables';

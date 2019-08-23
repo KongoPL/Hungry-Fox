@@ -1,8 +1,8 @@
 import React from "react";
 
-import 'scss/components/staff/StaffMember.scss';
+import 'scss/pages/staff/StaffMember.scss';
 
-import memberGraphic from 'images/staff-member.jpg';
+import memberGraphic from 'assets/staff-member.jpg';
 
 
 export default class StaffMember extends React.Component<{ className?: string}>

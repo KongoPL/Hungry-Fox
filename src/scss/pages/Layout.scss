@@ -71,7 +71,7 @@ header#page
 		}
 	}
 
-	.shopping-cart
+	.fa
 	{
 		margin-top: -7px;
 
@@ -81,6 +81,11 @@ header#page
 		line-height: 80px;
 
 		cursor: pointer;
+	}
+
+	.menu-mobile
+	{
+		margin-right: 20px;
 	}
 
 	.shopping-cart.active

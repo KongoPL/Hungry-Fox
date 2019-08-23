@@ -38,3 +38,20 @@ $colors-list: (
 		"base": #000
 	)
 );
+
+
+
+
+$small-screen: 576px;
+$medium-screen: 768px;
+$large-screen: 992px;
+$extra-large-screen: 1200px;
+
+
+$extra-large-and-up: "only screen and (min-width: #{$extra-large-screen})";
+$large-and-up: "only screen and (min-width: #{$large-screen})";
+$medium-and-up: "only screen and (min-width: #{$medium-screen})";
+$small-and-up: "only screen and (min-width: #{$small-screen})";
+
+$small-and-down: "only screen and (max-width: #{$medium-screen - 1px})";
+$medium-and-down: "only screen and (max-width: #{$medium-screen})";

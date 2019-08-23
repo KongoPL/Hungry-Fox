@@ -8,11 +8,13 @@
 	margin: 0px auto;
 }
 
-.row {
+.row
+{
 	margin-bottom: 20px;
 
 	display: flex;
 	flex-wrap: wrap;
+	word-wrap: break-word;
 
 	& .row
 	{
@@ -20,17 +22,43 @@
 	}
 }
 
-@for $i from 1 through $grid-columns-count {
-	.col-#{$i} {
-		width: ($i / $grid-columns-count * 100%);
+$responsivenes: (
+	"": "only screen and (min-width: 0px)",
+	"s": $small-and-up,
+	"m": $medium-and-up,
+	"l": $large-and-up,
+	"xl": $extra-large-and-up
+);
 
-		padding: 0px $grid-columns-padding;
-
-		box-sizing: border-box;
-	}
-
-	.offset-#{$i}
+@each $prefix, $mediaQuery in $responsivenes
+{
+	@media #{$mediaQuery}
 	{
-		margin-left: ($i / $grid-columns-count * 100%);
+		@for $i from 1 through $grid-columns-count
+		{
+			$responsiveName: "";
+
+			@if $prefix == ""
+			{
+				$responsiveName: $i;
+			}
+			@else
+			{
+				$responsiveName: $prefix+"-"+$i;
+			}
+
+			.col-#{$responsiveName} {
+				width: ($i / $grid-columns-count * 100%);
+
+				padding: 0px $grid-columns-padding;
+
+				box-sizing: border-box;
+			}
+
+			.offset-#{$responsiveName}
+			{
+				margin-left: ($i / $grid-columns-count * 100%);
+			}
+		}
 	}
 }

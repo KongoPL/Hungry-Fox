@@ -15,30 +15,28 @@ export default class Partners extends React.Component
 			<div className="partners">
 				<h1>Partners</h1>
 				<div className="row align-center">
-					<div className="col-3">
+					<div className="col-6 col-s-4 col-m-3">
 						<img src={googleGraphic} className="partner" alt="Google" />
 					</div>
-					<div className="col-3">
+					<div className="col-6 col-s-4 col-m-3">
 						<img src={githubGraphic} className="partner" alt="Github" />
 					</div>
-					<div className="col-3">
+					<div className="col-6 col-s-4 col-m-3">
 						<img src={uberGraphic} className="partner" alt="Uber" />
 					</div>
-					<div className="col-3">
+					<div className="col-6 col-s-4 col-m-3">
 						<img src={githubGraphic} className="partner" alt="Uber" />
 					</div>
-				</div>
-				<div className="row align-center">
-					<div className="col-3">
+					<div className="col-6 col-s-4 col-m-3">
 						<img src={googleGraphic} className="partner" alt="Google" />
 					</div>
-					<div className="col-3">
+					<div className="col-6 col-s-4 col-m-3">
 						<img src={githubGraphic} className="partner" alt="Github" />
 					</div>
-					<div className="col-3">
+					<div className="col-6 col-s-4 col-m-3">
 						<img src={uberGraphic} className="partner" alt="Uber" />
 					</div>
-					<div className="col-3">
+					<div className="col-6 col-s-4 col-m-3">
 						<img src={uberGraphic} className="partner" alt="Uber" />
 					</div>
 				</div>

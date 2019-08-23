@@ -8,3 +8,23 @@
 .align-center { align-items: center;}
 
 .clearfix { height: 1px; margin-bottom: -1px;}
+
+.no-margin { margin: 0px !important; }
+.no-margin-bottom { margin-bottom: 0px !important; }
+
+
+@media #{$medium-and-up}
+{
+	.show-on-small-and-down
+	{
+		display: none !important;
+	}
+}
+
+@media #{$small-and-down}
+{
+	.hide-on-small-and-down
+	{
+		display: none !important;
+	}
+}

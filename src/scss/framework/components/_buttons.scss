@@ -2,6 +2,8 @@
 {
 	padding: 10px 15px;
 
+	display: inline-block;
+
 	border: 0px none;
 	border-radius: 5px;
 
@@ -21,5 +23,9 @@
 
 .btn .fa
 {
+	float: left;
+
 	margin-right: 10px;
+
+	line-height: 1.3em;
 }

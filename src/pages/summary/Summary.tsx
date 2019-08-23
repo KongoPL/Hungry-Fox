@@ -10,7 +10,7 @@ export default class Summary extends React.Component
 				<h1>Order summary</h1>
 
 				<div className="row">
-					<div className="col-8">
+					<div className="col-7">
 						<form>
 							<div className="row">
 								<div className="col-6">
@@ -27,19 +27,21 @@ export default class Summary extends React.Component
 								</div>
 							</div>
 							<div className="row">
-								<div className="col-6">
+								<div className="col-12">
 									<div className="form-input required">
 										<label htmlFor="street">Street</label>
 										<input type="text" id="street" />
 									</div>
 								</div>
-								<div className="col-3">
+							</div>
+							<div className="row">
+								<div className="col-6">
 									<div className="form-input required">
 										<label htmlFor="buildingNumber">Building no.</label>
 										<input type="text" id="buildingNumber" />
 									</div>
 								</div>
-								<div className="col-3">
+								<div className="col-6">
 									<div className="form-input">
 										<label htmlFor="apartmentNumber">Apartment no.</label>
 										<input type="text" id="apartmentNumber" />
@@ -73,7 +75,7 @@ export default class Summary extends React.Component
 							</div>
 						</form>
 					</div>
-					<div className="col-3 offset-1">
+					<div className="col-4 offset-1">
 						<OrderSummary />
 					</div>
 				</div>

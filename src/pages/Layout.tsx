@@ -15,8 +15,10 @@ export default class Layout extends React.Component<{}>
 			<div id="layout">
 				<header id="page" className="bg-primary">
 					<div className="container">
+						<Icon name="bars" className="menu-mobile show-on-small-and-down" />
+
 						<div className="logo"><NavLink to="/"><img src={logotype} alt="logotype" /></NavLink></div>
-						<ul className="menu">
+						<ul className="menu hide-on-small-and-down">
 							<li><NavLink exact to="/" activeClassName="active">Order</NavLink></li>
 							<li><NavLink to="/coupons" activeClassName="active">Coupons</NavLink></li>
 							<li><NavLink to="/staff" activeClassName="active">Staff</NavLink></li>

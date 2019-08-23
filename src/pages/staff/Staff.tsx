@@ -9,16 +9,15 @@ export default class Staff extends React.Component
 			<div>
 				<h1>Staff</h1>
 				<div className="row">
-					<StaffMember className="col-2" />
-					<StaffMember className="col-2 offset-1" />
-					<StaffMember className="col-2 offset-1" />
-					<StaffMember className="col-2 offset-1" />
-				</div>
-				<div className="row">
-					<StaffMember className="col-2" />
-					<StaffMember className="col-2 offset-1" />
-					<StaffMember className="col-2 offset-1" />
-					<StaffMember className="col-2 offset-1" />
+					<StaffMember className="col-6 col-s-4 col-m-3 col-l-2" />
+					<StaffMember className="col-6 col-s-4 col-m-3 col-l-2 offset-l-1" />
+					<StaffMember className="col-6 col-s-4 col-m-3 col-l-2 offset-l-1" />
+					<StaffMember className="col-6 col-s-4 col-m-3 col-l-2 offset-l-1" />
+
+					<StaffMember className="col-6 col-s-4 col-m-3 col-l-2" />
+					<StaffMember className="col-6 col-s-4 col-m-3 col-l-2 offset-l-1" />
+					<StaffMember className="col-6 col-s-4 col-m-3 col-l-2 offset-l-1" />
+					<StaffMember className="col-6 col-s-4 col-m-3 col-l-2 offset-l-1" />
 				</div>
 			</div>
 		);

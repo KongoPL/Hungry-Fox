@@ -24,37 +24,35 @@ export default class Job extends React.Component<{ match: any}>
 				
 
 				<div className="row align-center text-center">
-					<div className="col-3">
+					<div className="col-12 col-s-6 col-m-3">
 						<h3>Frontend Developer</h3>
 						<Link to="job/1" className="btn">More info</Link>
 					</div>
-					<div className="col-3">
+					<div className="col-12 col-s-6 col-m-3">
 						<h3>Frontend Developer</h3>
 						<Link to="job/1" className="btn">More info</Link>
 					</div>
-					<div className="col-3">
+					<div className="col-12 col-s-6 col-m-3">
 						<h3>Frontend Developer</h3>
 						<Link to="job/1" className="btn">More info</Link>
 					</div>
-					<div className="col-3">
+					<div className="col-12 col-s-6 col-m-3">
 						<h3>Frontend Developer</h3>
 						<Link to="job/1" className="btn">More info</Link>
 					</div>
-				</div>
-				<div className="row align-center text-center">
-					<div className="col-3">
+					<div className="col-12 col-s-6 col-m-3">
 						<h3>Frontend Developer</h3>
 						<Link to="job/1" className="btn">More info</Link>
 					</div>
-					<div className="col-3">
+					<div className="col-12 col-s-6 col-m-3">
 						<h3>Frontend Developer</h3>
 						<Link to="job/1" className="btn">More info</Link>
 					</div>
-					<div className="col-3">
+					<div className="col-12 col-s-6 col-m-3">
 						<h3>Frontend Developer</h3>
 						<Link to="job/1" className="btn">More info</Link>
 					</div>
-					<div className="col-3">
+					<div className="col-12 col-s-6 col-m-3">
 						<h3>Frontend Developer</h3>
 						<Link to="job/1" className="btn">More info</Link>
 					</div>

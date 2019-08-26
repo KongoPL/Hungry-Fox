@@ -12,7 +12,7 @@ export default class SummaryConfirmation extends React.Component
 					<h1>60:59</h1>
 					<b>Order ID: #61654</b><br />
 					<br />
-					If food doesn't arrive within given time,<br />
+					If your order doesn't arrive within given time,<br />
 					contact with us: <a href="mailto:contact@johndoe.com">contact@johndoe.com</a><br />
 					or make a call: +48 123 123 123.<br />
 					<br />

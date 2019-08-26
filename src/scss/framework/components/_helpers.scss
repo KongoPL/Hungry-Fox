@@ -11,6 +11,10 @@
 
 .no-margin { margin: 0px !important; }
 .no-margin-bottom { margin-bottom: 0px !important; }
+.no-scroll { overflow: hidden;}
+.scroll-vertical-auto { overflow-y: auto;}
+
+.margin-top-15 { margin-top: 15px !important;}
 
 
 @media #{$medium-and-up}

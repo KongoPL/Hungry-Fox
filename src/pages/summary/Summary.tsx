@@ -10,7 +10,11 @@ export default class Summary extends React.Component
 				<h1>Order summary</h1>
 
 				<div className="row">
-					<div className="col-7">
+					<div className="col-12 col-l-4 push-l-8">
+						<OrderSummary />
+					</div>
+					<div className="col-12 col-l-7 pull-l-4">
+						<h3>Order details</h3>
 						<form>
 							<div className="row">
 								<div className="col-6">
@@ -74,9 +78,6 @@ export default class Summary extends React.Component
 								</div>
 							</div>
 						</form>
-					</div>
-					<div className="col-4 offset-1">
-						<OrderSummary />
 					</div>
 				</div>
 			</div>

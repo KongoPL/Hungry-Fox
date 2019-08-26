@@ -47,7 +47,10 @@ $responsivenes: (
 				$responsiveName: $prefix+"-"+$i;
 			}
 
-			.col-#{$responsiveName} {
+			.col-#{$responsiveName}
+			{
+				position: relative;
+
 				width: ($i / $grid-columns-count * 100%);
 
 				padding: 0px $grid-columns-padding;
@@ -55,9 +58,19 @@ $responsivenes: (
 				box-sizing: border-box;
 			}
 
-			.offset-#{$responsiveName}
+			.offset-#{$responsiveName}[class*="col-"]
 			{
 				margin-left: ($i / $grid-columns-count * 100%);
+			}
+
+			.push-#{$responsiveName}[class*="col-"]
+			{
+				left: ($i / $grid-columns-count * 100%);
+			}
+
+			.pull-#{$responsiveName}[class*="col-"]
+			{
+				left: -($i / $grid-columns-count * 100%);
 			}
 		}
 	}

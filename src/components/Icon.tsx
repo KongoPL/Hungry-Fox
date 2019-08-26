@@ -6,7 +6,7 @@ import React from 'react';
  * Sizes: https://fontawesome.com/how-to-use/on-the-web/styling/sizing-icons
 */
 
-export default class Icon extends React.Component<{name: string, size?: string, className?: string}>
+export default class Icon extends React.Component<{ name: string, size?: string, className?: string, onClick?: () => void }>
 {
 	render() {
 		let className = `fa fa-${this.props.name}`;
@@ -17,8 +17,10 @@ export default class Icon extends React.Component<{name: string, size?: string, 
 		if (typeof this.props.className == 'string')
 			className += ` ${this.props.className}`;
 
+		
+
 		return (
-			<i className={className}></i>
+			<i className={className} onClick={this.props.onClick}></i>
 		);
 	}
 }

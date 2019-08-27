@@ -67,7 +67,7 @@ export default class Summary extends React.Component
 							<div className="row">
 								<div className="col-12">
 									<div className="form-input">
-										<label htmlFor="name">Name</label>
+										<label htmlFor="name">Comments to order</label>
 										<textarea></textarea>
 									</div>
 								</div>

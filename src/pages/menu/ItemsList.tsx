@@ -4,26 +4,28 @@ import Icon from 'components/Icon';
 import 'scss/pages/menu/ItemsList.scss';
 
 import categoryIcon from 'assets/category-icon.png';
+import { Item } from "ApiDataTypes";
 
 
-export default class ItemsList extends React.Component {
-	render() {
-		return (
-			<section className="menu-items">
-				<h2>Bestsellers</h2>
+export default class ItemsList extends React.Component<{ categoryName: string, items: Item[] }>
+{
+	render()
+	{
+		let items = [];
+
+		for ( let item of this.props.items )
+			items.push(
 				<div className="menu-item align-center bg-white">
 					<div className="row no-margin">
-						<div className="col-m-7 offset-m-2"><h4>Lorem Ipsum</h4></div>
+						<div className="col-m-7 offset-m-2"><h4>{item.name}</h4></div>
 					</div>
 					<div className="row">
 						<div className="col-12 col-m-2 image">
 							<img src={categoryIcon} alt="" />
 						</div>
-						<div className="col-12 col-m-7 text">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis commodo justo eget congue. Proin porta ac urna ut eleifend. Curabitur viverra faucibus magna ut commodo. Phasellus pretium egestas erat, eu semper risus convallis eu. Maecenas eget erat in odio congue convallis. Sed vestibulum sagittis neque. Aliquam sit amet ornare dolor.
-						</div>
+						<div className="col-12 col-m-7 text" dangerouslySetInnerHTML={{ __html: item.description }}></div>
 						<div className="col-12 col-m-3 right-column">
-							<h4 className="price">$29,99</h4>
+							<h4 className="price">{item.priceFormatted}</h4>
 
 							<a className="btn">
 								<Icon name="plus" />
@@ -32,6 +34,13 @@ export default class ItemsList extends React.Component {
 						</div>
 					</div>
 				</div>
+			);
+
+
+		return (
+			<section className="menu-items">
+				<h2>{this.props.categoryName}</h2>
+				{items}
 			</section>
 		);
 	}

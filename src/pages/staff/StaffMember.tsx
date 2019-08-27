@@ -1,26 +1,27 @@
 import React from "react";
+import { StaffMember as StaffMemberType } from 'ApiDataTypes';
 
 import 'scss/pages/staff/StaffMember.scss';
 
 import memberGraphic from 'assets/staff-member.jpg';
 
 
-export default class StaffMember extends React.Component<{ className?: string}>
+export default class StaffMember extends React.Component<{ data: StaffMemberType, className?: string}>
 {
 	render()
 	{
-		let className = "staff-member text-center " + (this.props.className || "");
+		let className = "staff-member text-center" + ( " " + this.props.className || "" );
 
 		return (
 			<div className={className}>
 				<div className="image">
 					<img src={memberGraphic} alt="John Doe" />
 				</div>
-				<h3 className="name">John Doe</h3>
-				<div><b><i>Sales manager</i></b></div>
+				<h3 className="name">{this.props.data.name}</h3>
+				<div><b><i>{this.props.data.position}</i></b></div>
 				<div>
-					<a href="mailto:johndoe@gmail.com">johndoe@gmail.com</a><br />
-					+48 123 123 123
+					{this.props.data.email && <div><a href="mailto:{this.props.data.email}">{this.props.data.email}</a></div>}
+					{this.props.data.phone && <div>{this.props.data.phone}</div>}
 				</div>
 			</div>
 		);

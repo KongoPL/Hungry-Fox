@@ -2,25 +2,34 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Transition } from 'react-transition-group';
 
+import Api from 'Api';
 import Icon from 'components/Icon';
 import CartWindow from 'components/CartWindow';
+
+import { Category } from 'ApiDataTypes';
 
 import 'scss/pages/Layout.scss';
 
 import logotype from 'assets/logotype.png';
 
-export default class Layout extends React.Component<{}, { showMenu: boolean }>
+
+export default class Layout extends React.Component<{}, { showMenu: boolean, categories: Category[] }>
 {
 	constructor( props )
 	{
 		super( props );
 
-		this.state = { showMenu: false };
+		this.state = {
+			showMenu: false,
+			categories: []
+		};
 	}
 
 	componentDidMount()
 	{
 		document.querySelectorAll( '#menu li a' ).forEach( ( v ) => v.addEventListener( 'click', () => this.activateMenu( false ) ) );
+
+		Api.getCategories().then( ( categories ) => this.setState( { categories } ) );
 	}
 
 	render() {
@@ -32,7 +41,7 @@ export default class Layout extends React.Component<{}, { showMenu: boolean }>
 						<a href="#" onClick={() => this.activateMenu()}><Icon name="bars" className="menu-mobile show-on-small-and-down" /></a>
 
 						<div className="logo"><NavLink to="/"><img src={logotype} alt="logotype" /></NavLink></div>
-						<ul className="menu" id="menu">
+						<ul className="menu" id="menu" >
 							<li><NavLink exact to="/" activeClassName="active">Order</NavLink></li>
 							<li><NavLink to="/coupons" activeClassName="active">Coupons</NavLink></li>
 							<li><NavLink to="/staff" activeClassName="active">Staff</NavLink></li>
@@ -57,27 +66,9 @@ export default class Layout extends React.Component<{}, { showMenu: boolean }>
 							<div className="row align-center">
 								<div className="col-6 col-m-4">
 									<b>Our menu</b>
-									<div className="row">
-										<div className="col-6">
-											<ul className="footer-menu-links">
-												<li>Category</li>
-												<li>Category</li>
-												<li>Category</li>
-												<li>Category</li>
-												<li>Category</li>
-											</ul>
-										</div>
-
-										<div className="col-6">
-											<ul className="footer-menu-links">
-												<li>Category</li>
-												<li>Category</li>
-												<li>Category</li>
-												<li>Category</li>
-												<li>Category</li>
-											</ul>
-										</div>
-									</div>
+									<ul className="footer-menu-links row">
+										{this.state.categories.map( ( category ) => ( <li className="col-6" key={category.id}>{category.name}</li> ) )}
+									</ul>
 								</div>
 								<div className="col-6 col-m-4 push-m-4 text-center">
 									<Icon name="phone" size="3x" />

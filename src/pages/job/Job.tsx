@@ -1,7 +1,8 @@
 import React from "react";
-import { Link } from 'react-router-dom';
 import { Job as JobData } from 'ApiDataTypes';
 import Api from "Api";
+import JobDetails from "pages/job/JobDetails";
+import JobItem from "pages/job/JobItem";
 
 export default class Job extends React.Component<{ match: any }, { jobs: JobData[] }>
 {
@@ -29,12 +30,7 @@ export default class Job extends React.Component<{ match: any }, { jobs: JobData
 			const job = this.state.jobs.find( ( v ) => v.id == jobId );
 
 			if ( job )
-				jobDetails = (
-					<div>
-						<h2>{job.title}</h2>
-						<p dangerouslySetInnerHTML={{ __html: job.description }} />
-					</div>
-				);
+				jobDetails = <JobDetails data={job} />;
 		}
 
 
@@ -50,12 +46,7 @@ export default class Job extends React.Component<{ match: any }, { jobs: JobData
 				{jobDetails}
 
 				<div className="row align-center text-center">
-					{this.state.jobs.map( job =>
-						<div className="col-12 col-s-6 col-m-3">
-							<h3>{job.title}</h3>
-							<Link to={`/job/${job.id}`} className="btn">More info</Link>
-						</div>
-					)}
+					{this.state.jobs.map( job => <JobItem className="col-12 col-s-6 col-m-3" data={job} /> )}
 				</div>
 			</div>
 		);

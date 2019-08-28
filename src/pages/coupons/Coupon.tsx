@@ -3,9 +3,6 @@ import { Coupon as CouponType } from 'ApiDataTypes';
 
 import 'scss/pages/coupons/Coupon.scss';
 
-import saleGraphic from 'assets/sale-graphic.png';
-
-
 export default class Coupon extends React.Component<{ data: CouponType, className?: string }>
 {
 	render()
@@ -19,7 +16,7 @@ export default class Coupon extends React.Component<{ data: CouponType, classNam
 			<div className={className}>
 				<div className="row align-center">
 					<div className="col-12 col-l-4 image">
-						<img src={saleGraphic} alt="Sale graphic" />
+						<img src={this.props.data.imageUrl} alt="Sale graphic" />
 					</div>
 					<div className="col-12 col-l-8 text">
 						<h2>{this.props.data.title}</h2>

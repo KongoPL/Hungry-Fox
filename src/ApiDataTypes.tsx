@@ -2,6 +2,8 @@ export interface Category
 {
 	id: number,
 	name: string
+
+	imageUrl: string
 }
 
 
@@ -20,7 +22,8 @@ export interface Item
 	name: string,
 	description: string,
 	price: string,
-	priceFormatted: string
+	priceFormatted: string,
+	imageUrl: string
 }
 
 
@@ -30,6 +33,7 @@ export interface Coupon
 	description: string,
 	dateTo: string,
 	dateToTimestamp: number,
+	imageUrl: string
 }
 
 
@@ -39,6 +43,7 @@ export interface StaffMember
 	position: string,
 	email: string,
 	phone: string,
+	imageUrl: string
 }
 
 

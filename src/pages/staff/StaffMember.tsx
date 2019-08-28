@@ -3,9 +3,6 @@ import { StaffMember as StaffMemberType } from 'ApiDataTypes';
 
 import 'scss/pages/staff/StaffMember.scss';
 
-import memberGraphic from 'assets/staff-member.jpg';
-
-
 export default class StaffMember extends React.Component<{ data: StaffMemberType, className?: string}>
 {
 	render()
@@ -15,7 +12,7 @@ export default class StaffMember extends React.Component<{ data: StaffMemberType
 		return (
 			<div className={className}>
 				<div className="image">
-					<img src={memberGraphic} alt="John Doe" />
+					<img src={this.props.data.imageUrl} alt="John Doe" />
 				</div>
 				<h3 className="name">{this.props.data.name}</h3>
 				<div><b><i>{this.props.data.position}</i></b></div>

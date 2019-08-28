@@ -3,7 +3,6 @@ import Icon from 'components/Icon';
 
 import 'scss/pages/menu/ItemsList.scss';
 
-import categoryIcon from 'assets/category-icon.png';
 import { Item } from "ApiDataTypes";
 
 
@@ -21,7 +20,7 @@ export default class ItemsList extends React.Component<{ categoryName: string, i
 					</div>
 					<div className="row">
 						<div className="col-12 col-m-2 image">
-							<img src={categoryIcon} alt="" />
+							<img src={item.imageUrl} alt="" />
 						</div>
 						<div className="col-12 col-m-7 text" dangerouslySetInnerHTML={{ __html: item.description }}></div>
 						<div className="col-12 col-m-3 right-column">

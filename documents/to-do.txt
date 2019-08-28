@@ -1,0 +1,1 @@
+Smooth scrolling in menu when clicked on category

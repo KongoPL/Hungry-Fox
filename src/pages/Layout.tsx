@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import { Transition } from 'react-transition-group';
 
 import Api from 'Api';
@@ -11,9 +12,10 @@ import { Category } from 'ApiDataTypes';
 import 'scss/pages/Layout.scss';
 
 import logotype from 'assets/logotype.png';
+import Cart from 'Cart';
 
 
-export default class Layout extends React.Component<{}, { showMenu: boolean, categories: Category[] }>
+export default class Layout extends React.Component<{}, { showMenu: boolean, showBackground: boolean, showCart: boolean, categories: Category[], cartItemsCount: number }>
 {
 	constructor( props )
 	{
@@ -21,7 +23,10 @@ export default class Layout extends React.Component<{}, { showMenu: boolean, cat
 
 		this.state = {
 			showMenu: false,
-			categories: []
+			showBackground: false,
+			showCart: false,
+			categories: [],
+			cartItemsCount: 0
 		};
 	}
 
@@ -30,15 +35,18 @@ export default class Layout extends React.Component<{}, { showMenu: boolean, cat
 		document.querySelectorAll( '#menu li a' ).forEach( ( v ) => v.addEventListener( 'click', () => this.activateMenu( false ) ) );
 
 		Api.getCategories().then( ( categories ) => this.setState( { categories } ) );
+		Cart.onCartUpdate.listen( () => this.setState( { cartItemsCount: Cart.itemsCount } ) );
 	}
 
 	render() {
 
 		return (
 			<div id="layout">
-				<header id="page" className="bg-primary">
+				<header id="page" className="bg-primary fixed">
 					<div className="container">
-						<a href="#" onClick={() => this.activateMenu()}><Icon name="bars" className="menu-mobile show-on-small-and-down" /></a>
+						<a href="#" onClick={() => this.activateMenu()}>
+							<Icon name="bars" className="menu-mobile show-on-small-and-down" />
+						</a>
 
 						<div className="logo"><NavLink to="/"><img src={logotype} alt="logotype" /></NavLink></div>
 						<ul className="menu" id="menu" >
@@ -50,8 +58,11 @@ export default class Layout extends React.Component<{}, { showMenu: boolean, cat
 							<li><NavLink to="/contact" activeClassName="active">Contact</NavLink></li>
 						</ul>
 						<div className="float-right">
-							<Icon name="shopping-cart" className="shopping-cart" />
-							<CartWindow />
+							<a onClick={() => this.activateCartWindow()} className="shopping-cart">
+								<Icon name="shopping-cart" />
+								{this.state.cartItemsCount > 0 && <span className="items-count">{this.state.cartItemsCount}</span>}
+							</a>
+							<CartWindow id="cartWindow" />
 						</div>
 					</div>
 				</header>
@@ -67,7 +78,11 @@ export default class Layout extends React.Component<{}, { showMenu: boolean, cat
 								<div className="col-6 col-m-4">
 									<b>Our menu</b>
 									<ul className="footer-menu-links row">
-										{this.state.categories.map( ( category ) => ( <li className="col-6" key={category.id}>{category.name}</li> ) )}
+										{this.state.categories.map( ( category ) => (
+											<li className="col-6" key={category.id}>
+												<HashLink exact="true" to={`/#category-${category.id}`}>{category.name}</HashLink>
+											</li>
+										) )}
 									</ul>
 								</div>
 								<div className="col-6 col-m-4 push-m-4 text-center">
@@ -99,7 +114,7 @@ export default class Layout extends React.Component<{}, { showMenu: boolean, cat
 						</div>
 					</div>
 				</footer>
-				<Transition in={this.state.showMenu} timeout={500}>
+				<Transition in={this.state.showBackground} timeout={500}>
 					{( state ) => ( <div className="menu-background" id="menuBackground" onClick={() => this.activateMenu( false )} style={{
 						...{
 							transition: `opacity 500ms ease-in-out`,
@@ -120,38 +135,94 @@ export default class Layout extends React.Component<{}, { showMenu: boolean, cat
 
 	activateMenu( activate?: boolean )
 	{
-		const menu = document.getElementById( 'menu' ),
-			background = document.getElementById( 'menuBackground' ),
-			header = document.querySelector( 'header#page' );
-		 
 		if ( typeof activate == 'undefined' )
 			activate = !this.state.showMenu;
 
+		this.allowScrollingDocument( activate );
+
+		const menu = document.getElementById( 'menu' );
+
+		this.elementHeightAnimation( menu, activate );
+
+		if ( activate )
+			menu.classList.add( 'scroll-vertical-auto' );
+		else
+			menu.classList.remove( 'scroll-vertical-auto' );
+
+		this.setState( { showMenu: activate, showBackground: activate } );
+	}
+
+
+	allowScrollingDocument( value: boolean )
+	{
+		if ( value )
+			document.body.classList.add( 'no-scroll' );
+		else
+			document.body.classList.remove( 'no-scroll' );
+	}
+
+
+	elementHeightAnimation( element: HTMLElement, show: boolean )
+	{
+		if ( show )
+		{
+			element.style.height = 'auto';
+
+			let height = element.offsetHeight;
+
+			element.style.height = '0px';
+
+			setTimeout( () => element.style.height = height + 'px', 0 );
+		}
+		else
+			element.style.height = '0px';
+	}
+
+
+	activateCartWindow( activate?: boolean )
+	{
+		if ( typeof activate == 'undefined' )
+			activate = !this.state.showCart;
+
+		const cartWindow = document.getElementById( 'cartWindow' ),
+			shoppingCartLink = document.querySelector( '.shopping-cart' );
+
+		// show: active, then scroll-vertical-auto
+		// hide: scroll-vertical-auto (rem), then active (rem)
+
 		if ( activate )
 		{
-			document.body.classList.add( 'no-scroll' );
-			header.classList.add( 'fixed' );
-			menu.classList.add( 'scroll-vertical-auto' );
+			cartWindow.classList.add( 'active' );
 
-			// Menu height animation:
-			menu.style.height = 'auto';
-
-			let height = menu.offsetHeight;
-
-			menu.style.height = '0px';
-
-			setTimeout( () => menu.style.height = height + 'px', 0 );
+			shoppingCartLink.classList.add( 'active' );
 		}
 		else
 		{
-			document.body.classList.remove( 'no-scroll' );
-			header.classList.remove( 'fixed' );
-			menu.classList.remove( 'scroll-vertical-auto' );
+			cartWindow.classList.remove( 'scroll-vertical-auto' );
 
-			// Menu height animation:
-			menu.style.height = '0px';
+			shoppingCartLink.classList.remove( 'active' );
 		}
 
-		this.setState( { showMenu: activate } );
+		setTimeout( () => this.elementHeightAnimation( cartWindow, activate ), 0 );
+		setTimeout( () =>
+		{
+			if ( activate )
+				cartWindow.classList.add( 'scroll-vertical-auto' );
+			else
+				cartWindow.classList.remove( 'active' );
+		}, 500 );
+
+		this.setState( { showCart: activate } );
+	}
+
+
+	setFloatingHeader( value: boolean )
+	{
+		const header = document.querySelector( 'header#page' );
+
+		if ( value )
+			header.classList.add( 'fixed' );
+		else
+			header.classList.remove( 'fixed' );
 	}
 }

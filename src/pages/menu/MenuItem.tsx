@@ -6,7 +6,7 @@ import { Item } from 'ApiDataTypes';
 
 import 'scss/pages/menu/MenuItem.scss';
 
-export default class MenuItem extends React.Component<{ data: Item }>
+export default class MenuItem extends React.Component<{ data: Item, onAddToCart?: () => void }>
 {
 	render()
 	{
@@ -25,10 +25,10 @@ export default class MenuItem extends React.Component<{ data: Item }>
 					<div className="col-12 col-m-3 right-column">
 						<h4 className="price">{item.priceFormatted}</h4>
 
-						<a className="btn">
+						<button className="btn" onClick={this.props.onAddToCart}>
 							<Icon name="plus" />
 							Add
-						</a>
+						</button>
 					</div>
 				</div>
 			</div>

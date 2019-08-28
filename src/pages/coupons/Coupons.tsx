@@ -28,8 +28,8 @@ export default class Coupons extends React.Component<{}, { coupons: CouponType[]
 		for ( let coupons of groupedCoupons )
 		{
 			couponsRows.push( <div className="row">
-				<Coupon data={coupons[0]} className="col-5" />
-				{coupons[1] && <Coupon data={coupons[1]} className="col-5 offset-1" />}
+				<Coupon data={coupons[0]} className="col-5" key={coupons[0].id} />
+				{coupons[1] && <Coupon data={coupons[1]} className="col-5 offset-1" key={coupons[1].id} />}
 			</div> );
 		}
 

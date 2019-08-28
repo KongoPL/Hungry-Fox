@@ -25,7 +25,6 @@ const App: React.FC = () => {
 			<Layout>
 				<Switch>
 					<Route exact path="/" component={Menu} />
-					<Route exact path="/menu" component={Menu} />
 					<Route exact path="/coupons" component={Coupons} />
 					<Route exact path="/staff" component={Staff} />
 					<Route exact path="/partners" component={Partners} />

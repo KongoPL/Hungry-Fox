@@ -10,14 +10,9 @@ export default class Api
 	}
 
 
-	static getItems( categoryId?: number ): Promise<CategoriesItems>
+	static getItems(): Promise<CategoriesItems>
 	{
-		let data;
-
-		if ( categoryId )
-			data = { categoryId };
-
-		return this.apiCall( 'items', data );
+		return this.apiCall( 'items' );
 	}
 
 

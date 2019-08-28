@@ -46,7 +46,7 @@ export default class Job extends React.Component<{ match: any }, { jobs: JobData
 				{jobDetails}
 
 				<div className="row align-center text-center">
-					{this.state.jobs.map( job => <JobItem className="col-12 col-s-6 col-m-3" data={job} /> )}
+					{this.state.jobs.map( job => <JobItem className="col-12 col-s-6 col-m-3" data={job} key={job.id} /> )}
 				</div>
 			</div>
 		);

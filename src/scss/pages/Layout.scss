@@ -75,6 +75,8 @@ header#page
 
 			display: block;
 
+			transition: background 0.25s;
+
 			&:hover
 			{
 				background: rgba(0,0,0,0.15);
@@ -140,9 +142,47 @@ header#page
 		margin-right: 20px;
 	}
 
-	.shopping-cart.active
+	.shopping-cart
 	{
-		background: $color-secondary;
+		position: relative;
+
+		margin-top: -7px;
+
+		display: block;
+		
+		line-height: 80px;
+
+		transition: background 0.5s;
+
+		&.active
+		{
+			background: $color-secondary;
+		}
+
+		.fa
+		{
+			margin-top: 0px;
+		}
+
+		.items-count
+		{
+			position: absolute;
+			bottom: 22px;
+			right: -6px;
+
+			padding: 2px 5.5px;
+		
+			background: $color-secondary;
+
+			border: 1px solid $color-secondary;
+			border-radius: 12px;
+
+			line-height: 1;
+
+			transition: background 0.5s, color 0.5s;
+		}
+
+		&.active .items-count { color: $color-secondary; background: white;}
 	}
 }
 
@@ -172,8 +212,19 @@ footer#page .footer-text
 footer#page .footer-menu-links
 {
 	@include reset-list;
+	@include reset-link-style;
 
 	line-height: 2rem;
+
+	a
+	{
+		transition: 0.25s color;
+	}
+
+	a:hover
+	{
+		color: $color-secondary;
+	}
 }
 
 .menu-background

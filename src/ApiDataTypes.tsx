@@ -29,6 +29,7 @@ export interface Item
 
 export interface Coupon
 {
+	id: number,
 	title: string,
 	description: string,
 	dateTo: string,
@@ -39,6 +40,7 @@ export interface Coupon
 
 export interface StaffMember
 {
+	id: number,
 	name: string,
 	position: string,
 	email: string,

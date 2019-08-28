@@ -3,9 +3,10 @@ import Categories from 'pages/menu/Categories';
 import ItemsList from 'pages/menu/ItemsList';
 import Api from 'Api';
 
-import { Category, CategoriesItems } from "ApiDataTypes";
+import { Category, CategoriesItems, Item } from "ApiDataTypes";
 
 import 'scss/pages/menu/Categories.scss';
+import Cart from "Cart";
 
 
 export default class Menu extends React.Component<{}, { categories: Category[], categoriesItems: CategoriesItems }>
@@ -16,7 +17,7 @@ export default class Menu extends React.Component<{}, { categories: Category[], 
 
 		this.state = {
 			categories: [],
-			categoriesItems: {}
+			categoriesItems: {},
 		};
 	}
 
@@ -26,6 +27,7 @@ export default class Menu extends React.Component<{}, { categories: Category[], 
 		Api.getItems().then( ( categoriesItems ) => this.setState( { categoriesItems } ) );
 	}
 
+
 	render()
 	{
 		let itemsLists = [];
@@ -34,14 +36,28 @@ export default class Menu extends React.Component<{}, { categories: Category[], 
 		{
 			const categoryItems = this.state.categoriesItems[id];
 
-			itemsLists.push( <ItemsList categoryName={categoryItems.categoryName} items={categoryItems.items} /> );
+			itemsLists.push( <ItemsList id={`category-${id}`} categoryName={categoryItems.categoryName} items={categoryItems.items} onAddToCart={this.onAddToCart.bind( this )} key={id} /> );
 		}
 
 		return (
 			<div>
-				<Categories categories={this.state.categories} />
+				<Categories categories={this.state.categories} onCategoryChange={this.onCategoryChange.bind( this )} />
 				{itemsLists}
 			</div>
 		);
+	}
+
+
+	onCategoryChange( selectedCategory: number )
+	{
+		const scrollItem = document.querySelector( `#category-${selectedCategory}` );
+
+		scrollItem.scrollIntoView();
+	}
+
+
+	onAddToCart( item: Item )
+	{
+		Cart.addItem( item );
 	}
 }

@@ -25,9 +25,10 @@ export default class Staff extends React.Component<{}, { staffMembers: StaffMemb
 
 		for ( let i = 0; i < this.state.staffMembers.length; i++ )
 		{
-			const className = 'col-6 col-s-4 col-m-3 col-l-3';
+			const className = 'col-6 col-s-4 col-m-3 col-l-3',
+				member = this.state.staffMembers[i];
 
-			staffMembers.push( <StaffMember data={this.state.staffMembers[i]} className={className} /> );
+			staffMembers.push( <StaffMember data={member} className={className} key={member.id} /> );
 		}
 
 		return (

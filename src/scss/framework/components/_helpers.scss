@@ -17,6 +17,14 @@
 .margin-top-15 { margin-top: 15px !important;}
 
 
+@media #{$large-and-up}
+{
+	.show-on-medium-and-down
+	{
+		display: none !important;
+	}
+}
+
 @media #{$medium-and-up}
 {
 	.show-on-small-and-down

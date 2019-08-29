@@ -2,6 +2,7 @@ import React from "react";
 import StaffMember from "pages/staff/StaffMember";
 import { StaffMember as StaffMemberType } from 'ApiDataTypes';
 import Api from "Api";
+import i18n from "i18next";
 
 export default class Staff extends React.Component<{}, { staffMembers: StaffMemberType[] }>
 {
@@ -33,7 +34,7 @@ export default class Staff extends React.Component<{}, { staffMembers: StaffMemb
 
 		return (
 			<div>
-				<h1>Staff</h1>
+				<h1>{i18n.t( `Staff` )}</h1>
 				<div className="row">
 					{staffMembers}
 				</div>

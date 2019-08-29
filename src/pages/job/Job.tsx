@@ -3,6 +3,8 @@ import { Job as JobData } from 'ApiDataTypes';
 import Api from "Api";
 import JobDetails from "pages/job/JobDetails";
 import JobItem from "pages/job/JobItem";
+import i18n from "i18next";
+
 
 export default class Job extends React.Component<{ match: any }, { jobs: JobData[] }>
 {
@@ -36,11 +38,11 @@ export default class Job extends React.Component<{ match: any }, { jobs: JobData
 
 		return (
 			<div>
-				<h1>Job</h1>
+				<h1>{i18n.t( `Job` )}</h1>
 				<p>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam dui nisi, vestibulum nec sapien eget, molestie molestie mauris. Nullam est libero, dictum nec orci vel, lacinia porttitor ex. Morbi vitae cursus nisl. Mauris eget pulvinar lacus, nec iaculis nisi. Integer eu turpis nulla. Phasellus eget lectus rutrum, auctor nibh porta, sagittis urna. Praesent diam nunc, rutrum ut lorem eu, viverra fringilla felis. Mauris at sem sem. Donec porta gravida sapien, id condimentum diam sollicitudin sed.<br />
 					<br />
-					<b>To apply just send us your CV at <a href="mailto:job@hungry-fox.com">job@hungry-fox.com</a></b>
+					<b>{i18n.t( `To apply just send us your CV at` )} <a href="mailto:job@hungry-fox.com">job@hungry-fox.com</a></b>
 				</p>
 
 				{jobDetails}

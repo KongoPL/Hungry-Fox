@@ -1,4 +1,6 @@
- import React from 'react';
+import React from 'react';
+import i18n from "i18next";
+
 
 export default class SummaryConfirmation extends React.Component<{}, { timeLeft: number }>
 {
@@ -37,7 +39,7 @@ export default class SummaryConfirmation extends React.Component<{}, { timeLeft:
 	{
 		this.setState( (state) => ({
 			timeLeft: state.timeLeft - 1
-		}) );
+		} ) );
 	}
 
 
@@ -45,17 +47,17 @@ export default class SummaryConfirmation extends React.Component<{}, { timeLeft:
 	{
 		return (
 			<div>
-				<h1>Thank you for your order!</h1>
+				<h1>{i18n.t( `Thank you for your order!` )}</h1>
 				<div className="text-center">
-					<h2>Approximated waiting time:</h2>
+					<h2>{i18n.t( `Approximated waiting time` )}:</h2>
 					<h1>{this.getTimeLeft()}</h1>
-					<b>Order ID: #61654</b><br />
+					<b>{i18n.t( `Order ID` )}: #61654</b><br />
 					<br />
-					If your order doesn't arrive within given time,<br />
-					contact with us: <a href="mailto:contact@hungry-fox.com">contact@johndoe.com</a><br />
-					or make a call: +48 123 123 123.<br />
+					{i18n.t( `If your order doesn't arrive within given time,` )}<br />
+					{i18n.t( `contact with us` )}: <a href="mailto:contact@hungry-fox.com">contact@johndoe.com</a><br />
+					{i18n.t( `or make a call` )}: <b>+48 123 123 123</b>.<br />
 					<br />
-					However, take into account that I'm just a mock page.
+					{i18n.t( `However, take into account that I'm just a mock page.` )}
 				</div>
 			</div>
 		);

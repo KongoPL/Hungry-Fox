@@ -1,5 +1,7 @@
 import React from "react";
 import Icon from 'components/Icon';
+import i18n from "i18next";
+
 
 import { Item } from 'ApiDataTypes';
 
@@ -27,7 +29,7 @@ export default class MenuItem extends React.Component<{ data: Item, onAddToCart?
 
 						<button className="btn" onClick={this.props.onAddToCart}>
 							<Icon name="plus" />
-							Add
+							{i18n.t( `Add` )}
 						</button>
 					</div>
 				</div>

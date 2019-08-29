@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import Layout from 'pages/Layout';
 
 import Menu from 'pages/menu/Menu';
@@ -10,7 +10,6 @@ import Job from 'pages/job/Job';
 import Summary from 'pages/summary/Summary';
 import SummaryConfirmation from 'pages/summaryConfirmation/SummaryConfirmation';
 import PageNotFound from 'pages/pageNotFound/PageNotFound';
-import { useTranslation } from "react-i18next";
 
 
 import {
@@ -24,8 +23,6 @@ import Cart from 'Cart';
 const App: React.FC = () =>
 {
 	setTimeout( () => Cart.init(), 0 );
-
-	const { t } = useTranslation();
 
 	return (
 		<BrowserRouter>

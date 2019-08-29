@@ -2,6 +2,7 @@ import React from 'react';
 import OrderSummary from 'components/OrderSummary';
 import { Redirect } from 'react-router';
 import Cart from 'Cart';
+import i18n from "i18next";
 
 export default class Summary extends React.Component<{}, { formSubmitted?: boolean }>
 {
@@ -26,25 +27,25 @@ export default class Summary extends React.Component<{}, { formSubmitted?: boole
 			<div>
 				{this.state.formSubmitted && <Redirect exact to="/summaryConfirmation" />}
 
-				<h1>Order summary</h1>
+				<h1>{i18n.t( `Order summary` )}</h1>
 
 				<div className="row">
 					<div className="col-12 col-l-4 push-l-8">
 						<OrderSummary />
 					</div>
 					<div className="col-12 col-l-7 pull-l-4">
-						<h3>Order details</h3>
+						<h3>{i18n.t( `Order details` )}</h3>
 						<form onSubmit={this.tryToSubmitForm.bind( this )}>
 							<div className="row">
 								<div className="col-6">
 									<div className="form-input required">
-										<label htmlFor="name">Name</label>
+										<label htmlFor="name">{i18n.t( `Name` )}</label>
 										<input type="text" id="name" required />
 									</div>
 								</div>
 								<div className="col-6">
 									<div className="form-input required">
-										<label htmlFor="phone">Phone number</label>
+										<label htmlFor="phone">{i18n.t( `Phone number` )}</label>
 										<input type="text" id="phone" required />
 									</div>
 								</div>
@@ -52,7 +53,7 @@ export default class Summary extends React.Component<{}, { formSubmitted?: boole
 							<div className="row">
 								<div className="col-12">
 									<div className="form-input required">
-										<label htmlFor="street">Street</label>
+										<label htmlFor="street">{i18n.t( `Street` )}</label>
 										<input type="text" id="street" required />
 									</div>
 								</div>
@@ -60,13 +61,13 @@ export default class Summary extends React.Component<{}, { formSubmitted?: boole
 							<div className="row">
 								<div className="col-6">
 									<div className="form-input required">
-										<label htmlFor="buildingNumber">Building no.</label>
+										<label htmlFor="buildingNumber">{i18n.t( `Building no.` )}</label>
 										<input type="text" id="buildingNumber" required />
 									</div>
 								</div>
 								<div className="col-6">
 									<div className="form-input">
-										<label htmlFor="apartmentNumber">Apartment no.</label>
+										<label htmlFor="apartmentNumber">{i18n.t( `Apartment no.` )}</label>
 										<input type="text" id="apartmentNumber" />
 									</div>
 								</div>
@@ -74,11 +75,11 @@ export default class Summary extends React.Component<{}, { formSubmitted?: boole
 							<div className="row">
 								<div className="col-12">
 									<div className="form-input">
-										<label htmlFor="paymentMethod">Payment method</label>
+										<label htmlFor="paymentMethod">{i18n.t( `Payment method` )}</label>
 										<select id="paymentMethod">
-											<option>Online transfer</option>
-											<option>Cash</option>
-											<option>Credit card</option>
+											<option>{i18n.t( `Online transfer` )}</option>
+											<option>{i18n.t( `Cash` )}</option>
+											<option>{i18n.t( `Payment card` )}</option>
 										</select>
 									</div>
 								</div>
@@ -86,14 +87,14 @@ export default class Summary extends React.Component<{}, { formSubmitted?: boole
 							<div className="row">
 								<div className="col-12">
 									<div className="form-input">
-										<label htmlFor="name">Comments to order</label>
+										<label htmlFor="name">{i18n.t( `Comments to order` )}</label>
 										<textarea></textarea>
 									</div>
 								</div>
 							</div>
 							<div className="row">
 								<div className="col-12">
-									<button className="btn">Order</button>
+									<button className="btn">{i18n.t( `Order` )}</button>
 								</div>
 							</div>
 						</form>
@@ -109,7 +110,7 @@ export default class Summary extends React.Component<{}, { formSubmitted?: boole
 		event.preventDefault();
 
 		if ( Cart.isEmpty )
-			alert( "Your cart is empty! Please order something first!" );
+			alert( i18n.t( "Your cart is empty! Please order something first!" ) );
 		else
 			this.setState( { formSubmitted: true } );
 	}

@@ -1,8 +1,10 @@
-import { Category, CategoriesItems, Coupon, StaffMember, Job } from 'ApiDataTypes';
+﻿import { Category, CategoriesItems, Coupon, StaffMember, Job } from 'ApiDataTypes';
+import i18n from "i18next";
+
 
 export default class Api
 {
-	private static _apiUrl = 'http://localhost/hungry-fox-api/api/';
+	private static _apiUrl = 'http://192.168.0.109/hungry-fox-api/api/';
 
 	static getCategories(): Promise<Category[]>
 	{
@@ -40,6 +42,7 @@ export default class Api
 	}
 
 
+
 	private static apiCall( action: string, data?: object, method: string = 'get' ): Promise<any>
 	{
 		method = method.toUpperCase();
@@ -58,14 +61,23 @@ export default class Api
 		let fetchPromise;
 
 		if ( method == "GET" || method == "HEAD" )
-			fetchPromise = fetch( destinationUrl + ( requestBody == '' ? '' : '?' + requestBody ) );
+			fetchPromise = fetch( destinationUrl + ( requestBody == '' ? '' : '?' + requestBody ), {
+				method: method,
+				headers: {
+					'X-Language': i18n.language
+				},
+				redirect: 'follow',
+				credentials: "same-origin",
+			} );
 		else
 			fetchPromise = fetch( destinationUrl, {
 				method: method,
 				headers: {
 					'Content-Type': 'application/x-www-form-urlencoded',
+					'X-Language': i18n.language
 				},
 				redirect: 'follow',
+				credentials: "same-origin",
 				body: requestBody,
 			} );
 
@@ -75,6 +87,6 @@ export default class Api
 				console.error( reason );
 			else
 				alert( "API Error occured. Please contact with webmaster" );
-		} ).then( ( r ) => r.json() );
+		} ) .then( ( r ) => r.json() );
 	}
 }

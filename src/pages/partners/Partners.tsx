@@ -1,10 +1,7 @@
 import React from "react";
+import i18n from "i18next";
 
 import 'scss/pages/partners/Partners.scss';
-
-import googleGraphic from 'assets/partner-google.png';
-import githubGraphic from 'assets/partner-github.png';
-import uberGraphic from 'assets/partner-uber.png';
 
 
 export default class Partners extends React.Component
@@ -13,31 +10,31 @@ export default class Partners extends React.Component
 	{
 		return (
 			<div className="partners">
-				<h1>Partners</h1>
+				<h1>{i18n.t( `Partners` )}</h1>
 				<div className="row align-center">
 					<div className="col-6 col-s-4 col-m-3">
-						<img src={googleGraphic} className="partner" alt="Google" />
+						<img src="/images/partner-google.png" className="partner" alt="Google" />
 					</div>
 					<div className="col-6 col-s-4 col-m-3">
-						<img src={githubGraphic} className="partner" alt="Github" />
+						<img src="/images/partner-github.png" className="partner" alt="Github" />
 					</div>
 					<div className="col-6 col-s-4 col-m-3">
-						<img src={uberGraphic} className="partner" alt="Uber" />
+						<img src="/images/partner-uber.png" className="partner" alt="Uber" />
 					</div>
 					<div className="col-6 col-s-4 col-m-3">
-						<img src={githubGraphic} className="partner" alt="Uber" />
+						<img src="/images/partner-github.png" className="partner" alt="Uber" />
 					</div>
 					<div className="col-6 col-s-4 col-m-3">
-						<img src={googleGraphic} className="partner" alt="Google" />
+						<img src="/images/partner-google.png" className="partner" alt="Google" />
 					</div>
 					<div className="col-6 col-s-4 col-m-3">
-						<img src={githubGraphic} className="partner" alt="Github" />
+						<img src="/images/partner-github.png" className="partner" alt="Github" />
 					</div>
 					<div className="col-6 col-s-4 col-m-3">
-						<img src={uberGraphic} className="partner" alt="Uber" />
+						<img src="/images/partner-uber.png" className="partner" alt="Uber" />
 					</div>
 					<div className="col-6 col-s-4 col-m-3">
-						<img src={uberGraphic} className="partner" alt="Uber" />
+						<img src="/images/partner-uber.png" className="partner" alt="Uber" />
 					</div>
 				</div>
 			</div>

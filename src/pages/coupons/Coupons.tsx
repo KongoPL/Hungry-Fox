@@ -2,6 +2,8 @@ import React from "react";
 import Coupon from "pages/coupons/Coupon";
 import { Coupon as CouponType } from 'ApiDataTypes';
 import Api from "Api";
+import i18n from "i18next";
+
 
 export default class Coupons extends React.Component<{}, { coupons: CouponType[] }>
 {
@@ -36,7 +38,7 @@ export default class Coupons extends React.Component<{}, { coupons: CouponType[]
 
 		return (
 			<div>
-				<h1>Coupons</h1>
+				<h1>{i18n.t( `Coupons` )}</h1>
 				{couponsRows}
 			</div>
 		);

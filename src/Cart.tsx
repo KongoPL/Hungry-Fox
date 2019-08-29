@@ -1,4 +1,4 @@
-import { Item } from "ApiDataTypes";
+﻿import { Item } from "ApiDataTypes";
 
 class EventInstance
 {
@@ -36,10 +36,13 @@ export default class Cart
 
 	public static get totalValue()
 	{
-		let totalValue = 0;
+		let totalValue: number | string = 0;
 
 		for ( let item of this.items )
 			totalValue += item.quantity * item.item.price;
+
+		totalValue = totalValue + '';
+		totalValue = totalValue.replace( /(\.[0-9]{2}).*?$/, "$1" );
 
 		return '$' + totalValue;
 	}

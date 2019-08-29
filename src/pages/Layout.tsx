@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import { Transition } from 'react-transition-group';
@@ -12,9 +12,6 @@ import i18n from "i18next";
 import { Category } from 'ApiDataTypes';
 
 import 'scss/pages/Layout.scss';
-
-import logotype from 'assets/logotype.png';
-
 
 export default class Layout extends React.Component<{}, { showMenu: boolean, showBackground: boolean, showCart: boolean, categories: Category[], cartItemsCount: number }>
 {
@@ -41,6 +38,11 @@ export default class Layout extends React.Component<{}, { showMenu: boolean, sho
 		Api.getCategories().then( ( categories ) => this.setState( { categories } ) );
 
 		Cart.onCartUpdate.listen( () => this.setState( { cartItemsCount: Cart.itemsCount } ) );
+
+		const pageLanguage = sessionStorage.getItem( 'language' );
+
+		if ( pageLanguage )
+			this.changeLanguage( pageLanguage, false );
 	}
 
 	render() {
@@ -50,19 +52,22 @@ export default class Layout extends React.Component<{}, { showMenu: boolean, sho
 				<header id="page" className="bg-primary fixed">
 					<div className="container">
 						<a href="#" onClick={() => this.activateMenu()}>
-							<Icon name="bars" className="menu-mobile show-on-small-and-down" />
+							<Icon name="bars" className="menu-mobile show-on-medium-and-down" />
 						</a>
 
-						<div className="logo"><NavLink to="/"><img src={logotype} alt="logotype" /></NavLink></div>
+						<div className="logo"><NavLink to="/"><img src="/images/logotype.png" alt="logotype" /></NavLink></div>
 						<ul className="menu" id="menu" >
 							<li><NavLink exact to="/" activeClassName="active">{i18n.t( `Order` )}</NavLink></li>
-							<li><NavLink to="/coupons" activeClassName="active">Coupons</NavLink></li>
-							<li><NavLink to="/staff" activeClassName="active">Staff</NavLink></li>
-							<li><NavLink to="/partners" activeClassName="active">Partners</NavLink></li>
-							<li><NavLink to="/job" activeClassName="active">Job</NavLink></li>
-							<li><NavLink to="/contact" activeClassName="active">Contact</NavLink></li>
+							<li><NavLink to="/coupons" activeClassName="active">{i18n.t( `Coupons` )}</NavLink></li>
+							<li><NavLink to="/staff" activeClassName="active">{i18n.t( `Staff` )}</NavLink></li>
+							<li><NavLink to="/partners" activeClassName="active">{i18n.t( `Partners` )}</NavLink></li>
+							<li><NavLink to="/job" activeClassName="active">{i18n.t( `Job` )}</NavLink></li>
+							<li><NavLink to="/contact" activeClassName="active">{i18n.t( `Contact` )}</NavLink></li>
 						</ul>
 						<div className="float-right">
+							<a className="language-change" onClick={this.changeLanguage.bind( this )}>
+								<img src={this.getOtherLanguageImagePath()} alt="" /> <b>{this.getOtherLanguageName()}</b>
+							</a>
 							<a onClick={() => this.activateCartWindow()} className="shopping-cart">
 								<Icon name="shopping-cart" />
 								{this.state.cartItemsCount > 0 && <span className="items-count">{this.state.cartItemsCount}</span>}
@@ -83,8 +88,8 @@ export default class Layout extends React.Component<{}, { showMenu: boolean, sho
 					<div className="pre-footer bg-primary lighten-1">
 						<div className="container">
 							<div className="row align-center">
-								<div className="col-6 col-m-4">
-									<b>Our menu</b>
+								<div className="col-12 col-s-6 col-m-4">
+									<b>{i18n.t( `Our menu` )}</b>
 									<ul className="footer-menu-links row">
 										{this.state.categories.map( ( category ) => (
 											<li className="col-6" key={category.id}>
@@ -93,14 +98,14 @@ export default class Layout extends React.Component<{}, { showMenu: boolean, sho
 										) )}
 									</ul>
 								</div>
-								<div className="col-6 col-m-4 push-m-4 text-center">
+								<div className="col-12 col-s-6 col-m-4 push-m-4 text-center">
 									<Icon name="phone" size="3x" />
-									<h3 className="no-margin">Order by phone</h3>
+									<h3 className="no-margin">{i18n.t( `Order by phone` )}</h3>
 									<h2 className="no-margin margin-top-15">123 123 123</h2>
 								</div>
 
 								<div className="col-12 col-m-4 pull-m-4">
-									<div className="logo text-center"><img src={logotype} alt="logotype" /></div>
+									<div className="logo text-center"><img src="/images/logotype.png" alt="logotype" /></div>
 								</div>
 							</div>
 						</div>
@@ -114,7 +119,7 @@ export default class Layout extends React.Component<{}, { showMenu: boolean, sho
 								</div>
 									<div className="float-right">
 										<a href="https://github.com/KongoPL/Hungry-Fox" target="_blank">
-											<Icon name="github" /> Github project
+											<Icon name="github" /> {i18n.t( `Github project` )}
 										</a>
 									</div>
 								</div>
@@ -232,5 +237,35 @@ export default class Layout extends React.Component<{}, { showMenu: boolean, sho
 			header.classList.add( 'fixed' );
 		else
 			header.classList.remove( 'fixed' );
+	}
+
+
+	changeLanguage( language?: string, reload: boolean = true )
+	{
+		if ( typeof language != 'string' )
+			language = this.getOtherLanguage();
+
+		sessionStorage.setItem( 'language', language );
+		i18n.changeLanguage( language );
+
+		if ( reload ) // Kinda required as translation doesn't update by themselves
+			window.location.reload();
+	}
+
+
+	getOtherLanguage()
+	{
+		return ( i18n.language == "pl" ? "en" : "pl" );
+	}
+
+
+	getOtherLanguageImagePath()
+	{
+		return "/images/flags/" + this.getOtherLanguage() + ".png";
+	}
+
+	getOtherLanguageName()
+	{
+		return i18n.t( "LANGUAGE_NAME", { lng: this.getOtherLanguage() } );
 	}
 }

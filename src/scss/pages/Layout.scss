@@ -89,7 +89,7 @@ header#page
 		}
 	}
 
-	@media #{$small-and-down}
+	@media #{$medium-and-down}
 	{
 		.menu
 		{
@@ -142,16 +142,34 @@ header#page
 		margin-right: 20px;
 	}
 
+	.language-change
+	{
+		position:relative;
+		top: -7px;
+
+		margin-right: 15px;
+
+		display: inline-block;
+		
+		line-height: 80px;
+
+		cursor: pointer;
+
+		& > *
+		{
+			display: inline-block;
+			vertical-align: middle;
+		}
+	}
+
 	.shopping-cart
 	{
 		position: relative;
 
 		margin-top: -7px;
 
-		display: block;
+		display: inline-block;
 		
-		line-height: 80px;
-
 		transition: background 0.5s;
 
 		&.active

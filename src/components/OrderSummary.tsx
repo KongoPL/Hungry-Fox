@@ -1,7 +1,9 @@
-import React from 'react';
+﻿import React from 'react';
 import Icon from 'components/Icon';
 import Cart, { CartItem } from 'Cart';
 import { NavLink } from 'react-router-dom';
+import i18n from "i18next";
+
 
 import 'scss/components/OrderSummary.scss';
 
@@ -61,19 +63,19 @@ export default class OrderSummary extends React.Component<{ displayOrderButton?:
 					</table>
 					<hr />
 					<div className="total text-right">
-						Total: <h3 className="total-price">{Cart.totalValue}</h3>
+						{i18n.t( `Total` )}: <h3 className="total-price">{Cart.totalValue}</h3>
 				</div>
-				{this.props.displayOrderButton ? <NavLink exact to="/summary" className="btn float-right" onClick={this.props.onOrder}>Order</NavLink> : null}
+				{this.props.displayOrderButton ? <NavLink exact to="/summary" className="btn float-right" onClick={this.props.onOrder}>{i18n.t( `Order` )}</NavLink> : null}
 				</div>;
 		else
 			orderContent =
 				<div>
-					<i>Your cart is empty</i>
+				<i>{i18n.t( `Your cart is empty` )}</i>
 				</div>;
 
 		return (
 			<div className="order-summary">
-				<h3>Your order</h3>
+				<h3>{i18n.t( `Your order` )}</h3>
 				{orderContent}
 			</div>
 		);
@@ -84,7 +86,9 @@ export default class OrderSummary extends React.Component<{ displayOrderButton?:
 	{
 		const quantity = parseInt( event.target.value );
 
-		Cart.updateQuantity( itemId, quantity );
+		// Is a number
+		if ( quantity == event.target.value )
+			Cart.updateQuantity( itemId, quantity );
 	}
 
 

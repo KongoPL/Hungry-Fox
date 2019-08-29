@@ -7,7 +7,7 @@ Project created to learn React, and how it works. It's simple restaurant page ma
 During this project I learned a lot about React and I gained sort-of fluency in using it. Also got better in TypeScript and CSS3 as well.
 Also nice thing was to see PWA in action with my own website.
 
-API project which this app uses: [click](https://github.com/KongoPL/hungry-fox-api)
+**API project which this app uses:** [click](https://github.com/KongoPL/hungry-fox-api)
 
 # Screenshots
 ![screenshot-1.png](https://raw.githubusercontent.com/KongoPL/Hungry-Fox/master/documents/screenshot-1.png)

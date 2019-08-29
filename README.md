@@ -1,4 +1,4 @@
-# Hungry Fox :: Good food, fast delivery
+# Hungry Fox - Good food, fast delivery
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

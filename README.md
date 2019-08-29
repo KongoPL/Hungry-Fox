@@ -1,3 +1,5 @@
+# Hungry Fox :: Good food, fast delivery
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 Project created to learn React, and how it works. It's simple restaurant page made without CSS frameworks. However I made my own, small framework that have grids, buttons, helpers etc. etc.

@@ -34,9 +34,27 @@ export default class Cart
 
 	private static items: CartItem[] = [];
 
+	public static get totalValue()
+	{
+		let totalValue = 0;
 
-	public static get totalValue() { return 15; }
+		for ( let item of this.items )
+			totalValue += item.quantity * item.item.price;
+
+		return '$' + totalValue;
+	}
+
 	public static get itemsCount() { return this.items.length; }
+	public static get isEmpty() { return this.itemsCount == 0; }
+
+
+	public static init()
+	{
+		this.loadCartState();
+
+		this.onCartUpdate.listen( this.saveCartState.bind( this ) );
+	}
+
 
 	static addItem( itemToAdd: Item, quantity: number = 1 )
 	{
@@ -75,7 +93,7 @@ export default class Cart
 	}
 
 
-	static updateCount( itemId: number, value: number, deltaValue = false )
+	static updateQuantity( itemId: number, value: number, deltaValue = false )
 	{
 		const item = this.getItem( itemId );
 
@@ -90,7 +108,35 @@ export default class Cart
 	{
 		return this.items;
 	}
+
+
+	static empty()
+	{
+		this.items = [];
+
+		this.onCartUpdate.emit();
+	}
+
+
+	private static saveCartState()
+	{
+		sessionStorage.setItem( 'cart', JSON.stringify( this.items ) );
+	}
+
+
+	private static loadCartState()
+	{
+		this.items = JSON.parse( sessionStorage.getItem( 'cart' ) );
+
+		if ( this.items )
+			this.onCartUpdate.emit();
+		else
+			this.items = [];
+	}
 }
+
+
+
 
 export interface CartItem
 {

@@ -16,9 +16,14 @@ import {
 	Switch,
 	Route
 } from 'react-router-dom';
+import Cart from 'Cart';
 
 
-const App: React.FC = () => {
+const App: React.FC = () =>
+{
+	console.log( ":)" );
+
+	setTimeout( () => Cart.init(), 0 );
 
 	return (
 		<BrowserRouter>

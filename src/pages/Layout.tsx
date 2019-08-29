@@ -5,7 +5,7 @@ import { Transition } from 'react-transition-group';
 
 import Api from 'Api';
 import Icon from 'components/Icon';
-import CartWindow from 'components/CartWindow';
+import OrderSummary from 'components/OrderSummary';
 
 import { Category } from 'ApiDataTypes';
 
@@ -34,7 +34,11 @@ export default class Layout extends React.Component<{}, { showMenu: boolean, sho
 	{
 		document.querySelectorAll( '#menu li a' ).forEach( ( v ) => v.addEventListener( 'click', () => this.activateMenu( false ) ) );
 
+		document.querySelector( '#page-content' ).addEventListener( 'click', () => this.activateCartWindow( false ) );
+		document.querySelector( 'footer#page' ).addEventListener( 'click', () => this.activateCartWindow( false ) );
+
 		Api.getCategories().then( ( categories ) => this.setState( { categories } ) );
+
 		Cart.onCartUpdate.listen( () => this.setState( { cartItemsCount: Cart.itemsCount } ) );
 	}
 
@@ -62,7 +66,10 @@ export default class Layout extends React.Component<{}, { showMenu: boolean, sho
 								<Icon name="shopping-cart" />
 								{this.state.cartItemsCount > 0 && <span className="items-count">{this.state.cartItemsCount}</span>}
 							</a>
-							<CartWindow id="cartWindow" />
+							<div className="cart-window" id="cartWindow">
+								<div className="clearfix"></div>
+								<OrderSummary displayOrderButton onOrder={() => this.activateCartWindow( false )} />
+							</div>
 						</div>
 					</div>
 				</header>

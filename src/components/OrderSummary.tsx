@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 import 'scss/components/OrderSummary.scss';
 
 
-export default class OrderSummary extends React.Component<{ displayOrderButton?: boolean }, { items: CartItem[] }>
+export default class OrderSummary extends React.Component<{ displayOrderButton?: boolean, onOrder?: () => void }, { items: CartItem[] }>
 {
 	constructor( props )
 	{
@@ -42,9 +42,9 @@ export default class OrderSummary extends React.Component<{ displayOrderButton?:
 				<tr key={item.item.id}>
 					<td className="name">{item.item.name}</td>
 					<td className="price"><b>{item.item.priceFormatted}</b></td>
-					<td className="quantity">x<input type="text" value={item.quantity} className="text-center" /></td>
+					<td className="quantity">x<input type="text" value={item.quantity} className="text-center" onChange={this.changeItemQuantity.bind( this, item.item.id )} /></td>
 					<td className="actions">
-						<Icon name="times" />
+						<a onClick={this.deleteItem.bind( this, item.item.id )}><Icon name="times" /></a>
 					</td>
 				</tr>
 			);
@@ -55,13 +55,15 @@ export default class OrderSummary extends React.Component<{ displayOrderButton?:
 			orderContent =
 				<div>
 					<table className="order-items table">
-						{items}
+						<tbody>
+							{items}
+						</tbody>
 					</table>
 					<hr />
 					<div className="total text-right">
 						Total: <h3 className="total-price">{Cart.totalValue}</h3>
 				</div>
-				{this.props.displayOrderButton ? <NavLink exact to="/summary" className="btn float-right">Order</NavLink> : null}
+				{this.props.displayOrderButton ? <NavLink exact to="/summary" className="btn float-right" onClick={this.props.onOrder}>Order</NavLink> : null}
 				</div>;
 		else
 			orderContent =
@@ -75,5 +77,19 @@ export default class OrderSummary extends React.Component<{ displayOrderButton?:
 				{orderContent}
 			</div>
 		);
+	}
+
+
+	changeItemQuantity( itemId, event )
+	{
+		const quantity = parseInt( event.target.value );
+
+		Cart.updateQuantity( itemId, quantity );
+	}
+
+
+	deleteItem( itemId )
+	{
+		Cart.removeItem( itemId );
 	}
 }

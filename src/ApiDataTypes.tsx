@@ -21,7 +21,7 @@ export interface Item
 	id: number,
 	name: string,
 	description: string,
-	price: string,
+	price: number,
 	priceFormatted: string,
 	imageUrl: string
 }

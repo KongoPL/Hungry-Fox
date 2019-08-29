@@ -49,7 +49,7 @@ export default class Api
 		if ( typeof data == 'object' )
 		{
 			for ( let key in data )
-				requestBody += key + '=' + data[key].replace( /\&/g, '%26' )+ '&';
+				requestBody += key + '=' + data[key].replace( /&/g, '%26' )+ '&';
 
 			requestBody = requestBody.substr( 0, requestBody.length - 1 );
 		}

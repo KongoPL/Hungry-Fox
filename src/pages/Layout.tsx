@@ -6,13 +6,14 @@ import { Transition } from 'react-transition-group';
 import Api from 'Api';
 import Icon from 'components/Icon';
 import OrderSummary from 'components/OrderSummary';
+import Cart from 'Cart';
+import i18n from "i18next";
 
 import { Category } from 'ApiDataTypes';
 
 import 'scss/pages/Layout.scss';
 
 import logotype from 'assets/logotype.png';
-import Cart from 'Cart';
 
 
 export default class Layout extends React.Component<{}, { showMenu: boolean, showBackground: boolean, showCart: boolean, categories: Category[], cartItemsCount: number }>
@@ -54,7 +55,7 @@ export default class Layout extends React.Component<{}, { showMenu: boolean, sho
 
 						<div className="logo"><NavLink to="/"><img src={logotype} alt="logotype" /></NavLink></div>
 						<ul className="menu" id="menu" >
-							<li><NavLink exact to="/" activeClassName="active">Order</NavLink></li>
+							<li><NavLink exact to="/" activeClassName="active">{i18n.t( `Order` )}</NavLink></li>
 							<li><NavLink to="/coupons" activeClassName="active">Coupons</NavLink></li>
 							<li><NavLink to="/staff" activeClassName="active">Staff</NavLink></li>
 							<li><NavLink to="/partners" activeClassName="active">Partners</NavLink></li>

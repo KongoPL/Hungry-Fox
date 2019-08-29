@@ -10,6 +10,8 @@ import Job from 'pages/job/Job';
 import Summary from 'pages/summary/Summary';
 import SummaryConfirmation from 'pages/summaryConfirmation/SummaryConfirmation';
 import PageNotFound from 'pages/pageNotFound/PageNotFound';
+import { useTranslation } from "react-i18next";
+
 
 import {
 	BrowserRouter,
@@ -21,9 +23,9 @@ import Cart from 'Cart';
 
 const App: React.FC = () =>
 {
-	console.log( ":)" );
-
 	setTimeout( () => Cart.init(), 0 );
+
+	const { t } = useTranslation();
 
 	return (
 		<BrowserRouter>
